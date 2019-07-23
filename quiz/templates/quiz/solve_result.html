@@ -1,0 +1,9 @@
+<p>도전자 {{ challenger.name}}</p>
+<p>점수 {{ challenger.result }} / 10</p>
+
+<a href="{% url 'quiz:quiz_home' %}">나의 우정 테스트 만들기</a>
+
+<p>누가 {{ user.name }}님을 가장 잘 알까요?</p>
+{% for chllngr in user.challenger_set.all %}
+    <p>{{ chllngr.name }} {{chllngr.result}}</p>
+{% endfor %}
