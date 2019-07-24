@@ -1,4 +1,23 @@
-<p>이름 : {{ user.name }}</p>
-<p>코드 : {{ user.hashcode }}</p>
-<p>정답 : {{ user.answer }}</p>
-<p>주소 : {{ user.quiz_url }}</p>
+{% extends "quiz/base.html" %}
+
+
+{% block content %}
+
+
+    <div class="container">
+
+        <div class="card" style="background-color: white; margin-top: 20px; margin-bottom: 40px">
+            <div class="card-body">
+                <h5 class="card-title d-flex align-items-center d-flex justify-content-center"
+                    style="text-align: center; height:100px; ">👏🏻만들기 완료👏🏻<br> 친구들에게 공유하세요 </h5>
+                <p class="card-text" style="text-align: center">{{ user.quiz_url }}</p>
+                <button type="button" class="btn btn-success btn-lg btn-block">copy URL</button>
+            </div>
+        </div>
+        <h4 class="whos">
+            아직 테스트에 참여한 친구가 없습니다.<br>
+            링크를 공유해 보세요!
+        </h4>
+
+    </div>
+{% endblock %}
