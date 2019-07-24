@@ -25,10 +25,11 @@ def quiz_create(request, pk):
     num = 1
     if request.POST:
         num = int(request.POST['quiz_id']) + 1
-        if num > 10:
-            return redirect("quiz:quiz_complete", pk)
         user.answer = ''.join([user.answer, request.POST['answer']])
         user.save()
+
+        if num > 10:
+            return redirect("quiz:quiz_complete", pk)
         
     quiz = get_object_or_404(Quiz, id=num)
     
