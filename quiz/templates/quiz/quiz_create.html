@@ -12,7 +12,7 @@
         <div class="container d-flex justify-content-around">
             <div class="card"
                  style="width: 18rem; height: 20rem;  box-shadow: none; margin-right: 20px ;background-color: white">
-                <img src="#" class="card-img-top" alt="...">
+                <img src="/static/{{ quiz.id }}-1.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
 
                     <form action="" method="POST">
@@ -20,7 +20,7 @@
                         <input type="hidden" name="quiz_id" value="{{ quiz.id }}">
                         <input type="hidden" name="answer" value="1">
                         <input type="submit"
-                               style="border: none; background-color:white;   padding-top: 245px;   width:100% ;"
+                               style="border: none; background-color:white;   padding-top: 50px;   width:100% ;"
                                value="{{ quiz.opt1 }}">
                     </form>
 
@@ -29,7 +29,7 @@
 
             <div class="card"
                  style="width: 18rem; height: 20rem; box-shadow: none; background-color: white; margin-right: 20px ;">
-                <img src="#" class="card-img-top" alt="...">
+                <img src="/static/{{ quiz.id }}-2.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
 
                     <form action="" method="POST">
@@ -37,7 +37,7 @@
                         <input type="hidden" name="quiz_id" value="{{ quiz.id }}">
                         <input type="hidden" name="answer" value="2">
                         <input type="submit"
-                               style="border: none; background-color:white;padding-top: 245px;   width:100% ;text-align: left"
+                               style="border: none; background-color:white;padding-top: 50px;   width:100% ;"
                                value="{{ quiz.opt2 }}">
                     </form>
 

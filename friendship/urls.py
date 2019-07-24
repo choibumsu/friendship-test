@@ -16,9 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.shortcuts import redirect
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     #path('', lambda r:redirect('quiz:quiz_home.html'), name='root'),
     path('admin/', admin.site.urls),
     path('quiz/', include('quiz.urls', namespace="quiz")),
 ]
+
+urlpatterns += staticfiles_urlpatterns()
