@@ -1,23 +1,54 @@
-<table style="border: 1px solid black">
-    <tr>
-        <td>{{ quiz.title }}</td>
-    </tr>
-    <tr>
-        <td style="border: 1px solid black">
-            <form action="" method="POST">
-                {% csrf_token %}
-                <input type="hidden" name="quiz_id" value="{{ quiz.id }}">
-                <input type="hidden" name="answer" value="1">
-                <input type="submit" value="{{ quiz.opt1 }}">
-            </form>
-        </td>
-        <td style="border: 1px solid black">
-            <form action="" method="POST">
-                {% csrf_token %}
-                <input type="hidden" name="quiz_id" value={{ quiz.id }}>
-                <input type="hidden" name="answer" value="2">
-                <input type="submit" value="{{ quiz.opt2 }}">
-            </form>
-        </td>
-    </tr>
-</table>
+{% extends "quiz/base.html" %}
+{% block content %}
+<body>
+<div class="progress" style="height: 80px; padding:10px auto;" >
+  <div class="progress-bar" id="progress" role="progressbar" style="width: 25%;background-color: darkviolet !important;
+    color: darkviolet !important; !important" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+
+    <div class="container">
+        <div class="header">
+            <h2 style="margin-top: 70px; margin-bottom: 20px; font-weight: bold">{{ quiz.title }}</h2></div>
+        <div class="container d-flex justify-content-around">
+            <div class="card"
+                 style="width: 18rem; height: 20rem;  box-shadow: none; margin-right: 20px ;background-color: white">
+                <img src="#" class="card-img-top" alt="...">
+                <div class="card-body">
+
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="quiz_id" value="{{ quiz.id }}">
+                        <input type="hidden" name="answer" value="1">
+                        <input type="submit"
+                               style="border: none; background-color:white;   padding-top: 245px;   width:100% ;"
+                               value="{{ quiz.opt1 }}">
+                    </form>
+
+                </div>
+            </div>
+
+            <div class="card"
+                 style="width: 18rem; height: 20rem; box-shadow: none; background-color: white; margin-right: 20px ;">
+                <img src="#" class="card-img-top" alt="...">
+                <div class="card-body">
+
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="quiz_id" value="{{ quiz.id }}">
+                        <input type="hidden" name="answer" value="2">
+                        <input type="submit"
+                               style="border: none; background-color:white;padding-top: 245px;   width:100% ;text-align: left"
+                               value="{{ quiz.opt2 }}">
+                    </form>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</body>
+
+
+{% endblock %}
