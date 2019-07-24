@@ -1,7 +1,45 @@
-<h1>우정 테스트 만들기</h1>
+{% extends "quiz/base.html" %}
 
-<form action="" method="get">
-    <p>이름 <input type="text" name="name"></p>
-    <p>제페토코드 <input type="text" name="hashcode"></p>
-    <p><input type="submit" value="시작하기"></p>
-</form>
+{% block content %}
+
+<div class="container mt-5 pt-5">
+    <i class="quiz text-center">
+        <p><img src="https://static.zzz.studio/static/logoQuiz%403x.png" style="width: 100px;" ></p>
+    </i>
+    <form action="" method="get">
+        <div class="row pt-5 pb-5">
+            <div class="sign col-12 text-center bg-white p-5">
+                <h3 style="margin-bottom: 40px;">우정 테스트 만들기</h3>
+                <div class="container d-flex justify-content-between">
+                    <span style="font-weight: bold;">이름</span>
+                    <input type="text" name="name" style="border: none; text-align: right;" placeholder="이름을 입력하세요.">
+                </div>
+                <hr>
+                <div class="container d-flex justify-content-between">
+                    <span style="font-weight: bold;">제페토코드</span>
+                    <input type="text" name="hashcode" style="border: none; text-align: right;" placeholder="ZZZZZZ">
+                </div>
+                <hr>
+            </div>
+            <div class="container">
+                <div class="startbtn row">
+                    <input class="start col-12 p-3 mt-3" type="submit" value="시작하기" style="background-color: #33eea7; border: none; font-weight: bold;">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="container bg-white p-5" style="height: 190px;">
+    <div class="d-flex justify-content-between">
+        <p style="font-weight: bold;">제페토를<br/>다운로드하세요</p>
+        <img src="https://static.zzz.studio/static/appiconsml%403x.png" alt="" style="width: 50px; height:50px;">
+    </div>
+    <div class="row">
+        <a href="https://zepeto.me/?shortlink=dafa524e&pid=LINE-TIMELINE&c=App_Install&af_channel=LINE_TIMELINE&af_adset=JP_LINE_user&af_ad=Photobooth" class="downloadbtn col-12 text-center"
+           style="border: 5px solid black; text-decoration: none;
+       color: black; font-weight: bold; height: 48px;">Donwload ZEPETO</a>
+    </div>
+</div>
+
+{% endblock %}
