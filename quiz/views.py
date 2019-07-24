@@ -25,14 +25,15 @@ def quiz_create(request, pk):
     num = 1
     if request.POST:
         num = int(request.POST['quiz_id']) + 1
-        if num > 10:
-            return redirect("quiz:quiz_complete", pk)
         user.answer = ''.join([user.answer, request.POST['answer']])
         user.save()
+
+        if num > 10:
+            return redirect("quiz:quiz_complete", pk)
         
     quiz = get_object_or_404(Quiz, id=num)
     
-    return render(request, "quiz/quiz_create.html", {'quiz':quiz})
+    return render(request, "quiz/quiz_create.html", {'quiz':quiz, 'bar':10*num})
 
 def quiz_complete(request, pk):
     user = get_object_or_404(User, pk=pk)
@@ -50,7 +51,7 @@ def quiz_complete(request, pk):
 
 #퀴즈 풀이
 def solve_home(request, quiz_url):
-    user = get_object_or_404(User, quiz_url=domain+str(quiz_url))
+    user = get_object_or_404(User, quiz_url=domain+str(quiz_url).zfill(6))
 
     if request.GET:
         challenger = Challenger()
@@ -73,13 +74,21 @@ def solve_quiz(request, pk):
             challenger.result += 1
             challenger.save()
         if num > 10:
-                return render(request, "quiz/solve_result.html", {"user":user, "challenger":challenger})
+            return redirect("quiz:solve_result", challenger.pk)
 
     quiz = get_object_or_404(Quiz, id=num)
     
-    return render(request, "quiz/solve_quiz.html", {'quiz':quiz})
+    return render(request, "quiz/solve_quiz.html", {'quiz':quiz, 'bar':10*num })
 
 def solve_result(request, pk):
     challenger = get_object_or_404(Challenger, pk=pk)
-    user = get_object_or_404(User, pk=challenger.user_obj.pk)
-    return render(request, "quiz/solve_result.html", {"user":user, "challenger":challenger})
+    user = challenger.user_obj
+    if challenger.result >= 9:
+        text = user.name+"님과 소울메이트네요! 😍"
+    elif challenger.result >= 7:
+        text = "요즘 "+user.name+"님과 자주 보시나봐요 😁"
+    elif challenger.result >= 5:
+        text = "이 정도면 "+user.name+"님과 친한 사이라고 해둘게요 👻"
+    else:
+        text = "음. "+user.name+"님과 어색한 사이군요? 🙃"
+    return render(request, "quiz/solve_result.html", {"user":user, "challenger":challenger, "text":text})

@@ -1,9 +1,33 @@
-<p>도전자 {{ challenger.name }}</p>
-<p>점수 {{ challenger.result }} / 10</p>
-
-<a href="{% url 'quiz:quiz_home' %}">나의 우정 테스트 만들기</a>
-
-<p>누가 {{ user.name }}님을 가장 잘 알까요?</p>
-{% for chllngr in user.challenger_set.all %}
-    <p>{{ chllngr.name }} {{chllngr.result}}</p>
-{% endfor %}
+{% extends "quiz/base.html" %}
+{% block content %}
+<div class="container pt-3">
+    <div class="card bg-light">
+        <div class="card-body">
+            <h3 class="text-center card-title">나의 점수</h3>
+            <div class="circle-container text-center d-flex justify-content-center m-1">
+                <div class="rounded-circle border-primary d-flex align-items-center justify-content-center"
+                    style="width:140px;height:140px;border:9px solid;">
+                    <div class="text-primary">
+                        <h3><strong>{{ challenger.result }}</strong>/10</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center card-text m-3"><strong>{{ text }}</strong></div>
+        </div>
+    </div>
+    <a href="{% url 'quiz:quiz_home' %}"><button type="button" class="w-100 mt-2 p-3 btn" style="background-color: #33eea7; border: none; font-weight: bold;">나의 우정 테스트
+            만들기</button></a>
+    <p class="pt-5"><strong>누가 {{ user.name }}님을 가장 잘 알까요?</strong></p>
+    <div class="card  bg-light">
+        <div class="card-body p-5">
+            {% for chllngr in user.challenger_set.all %}
+            <div class="d-flex justify-content-between">
+                <div class="d-inline-flex"><strong>{{ chllngr.name }}</strong></div>
+                <div class="d-inline-flex text-primary"><strong>{{chllngr.result}}</strong>/10</div>
+            </div>
+            <hr />
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

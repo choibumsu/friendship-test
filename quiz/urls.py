@@ -12,3 +12,4 @@ urlpatterns = [
     path('solve/<int:pk>', views.solve_quiz, name="solve_quiz"),
     path('result/<int:pk>', views.solve_result, name="solve_result"),
 ]
+
