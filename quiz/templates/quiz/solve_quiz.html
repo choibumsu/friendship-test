@@ -2,9 +2,9 @@
 {% extends "quiz/base.html" %}
 {% block content %}
 <body>
-<div class="progress" style="height: 80px; padding:10px auto;" >
-  <div class="progress-bar" id="progress" role="progressbar" style="width: 25%;background-color: darkviolet !important;
-    color: darkviolet !important; !important" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+<div class="progress" style="height: 40px; padding:10px auto; margin-top: 10px;" >
+  <div class="progress-bar text-left" id="progress" role="progressbar" style="width: {{ bar }}%; background-color: #b19aff;
+    color: black; font-size: 15px;" aria-valuenow="{{ bar }}" aria-valuemin="0" aria-valuemax="100">{{ quiz.id }}/10</div>
 </div>
 
     <div class="container">
