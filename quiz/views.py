@@ -33,7 +33,7 @@ def quiz_create(request, pk):
         
     quiz = get_object_or_404(Quiz, id=num)
     
-    return render(request, "quiz/quiz_create.html", {'quiz':quiz})
+    return render(request, "quiz/quiz_create.html", {'quiz':quiz, 'bar':10*num})
 
 def quiz_complete(request, pk):
     user = get_object_or_404(User, pk=pk)
@@ -78,7 +78,7 @@ def solve_quiz(request, pk):
 
     quiz = get_object_or_404(Quiz, id=num)
     
-    return render(request, "quiz/solve_quiz.html", {'quiz':quiz})
+    return render(request, "quiz/solve_quiz.html", {'quiz':quiz, 'bar':10*num })
 
 def solve_result(request, pk):
     challenger = get_object_or_404(Challenger, pk=pk)
