@@ -51,7 +51,7 @@ def quiz_complete(request, pk):
 
 #퀴즈 풀이
 def solve_home(request, quiz_url):
-    user = get_object_or_404(User, quiz_url=domain+str(quiz_url))
+    user = get_object_or_404(User, quiz_url=domain+str(quiz_url).zfill(6))
 
     if request.GET:
         challenger = Challenger()

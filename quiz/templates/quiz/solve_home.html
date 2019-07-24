@@ -3,38 +3,34 @@
 
 {% block content %}
 
-    <div class="container">
+<div class="container">
+    <form action="" method="get">
         <div class style=" margin-top: 20px; margin-bottom: 40px">
             <div class="d-flex justify-content-center">
                 <img src="https://static.zzz.studio/static/logoQuiz%403x.png" alt="" id="logo"
-                     style="width:83px; margin-top: 35px;margin-bottom: 52px; ">
+                    style="width:83px; margin-top: 35px;margin-bottom: 52px; ">
             </div>
         </div>
         <div class style="background-color: #9B9A94; margin-top: 20px; height: 150px">
             <div class="card-body">
                 <h5 class="card-title d-flex align-items-center"
-                    style="text-align: left; height:80px; font-weight: 700; font-size: 22px; line-height: 26px; color: white;">{{ user.name }}님<br>
+                    style="text-align: left; height:80px; font-weight: 700; font-size: 22px; line-height: 26px; color: white;">
+                    {{ user.name }}님<br>
                     우정퀴즈!<br></h5>
                 <h5 class="card-title d-flex align-items-center"
                     style="text-align: left; height:20px; font-size: 13px; line-height: 26px; color: white;">0명이 참여했습니다
                 </h5>
             </div>
         </div>
-        <div class style="background-color: white; margin-bottom: 20px; height: 150px">
+        <div class="d-flex align-items-center justify-content-center" style="background-color: white; margin-bottom: 20px; height: 150px">
             <div class="card-body">
-                <h5 class="card-title d-flex align-items-center"
-                    style="text-align: left; height:80px; font-weight: 700; font-size: 22px; line-height: 26px; color: white;">{{ user.name }}님<br>
-                    우정퀴즈!<br></h5>
-                <h5 class="card-title d-flex align-items-center"
-                    style="text-align: left; height:20px; font-size: 13px; line-height: 26px; color: white;">0명이 참여했습니다
-                </h5>
+                    <div>이름 <input type="text" name="name" style="border:0px; width:80%;"></div>
+                    <hr/>
             </div>
         </div>
-        <button type="button" class="btn btn-success btn-lg btn-block">시작하기</button>
 
-        <form action="" method="get">
-            <p>이름 <input type="text" name="name"></p>
-            <p><input type="submit" value="시작하기"></p>
-        </form>
-    </div>
+        
+        <p><input type="submit" value="시작하기" class="btn btn-success btn-lg btn-block"></p>
+    </form>
+</div>
 {% endblock %}
