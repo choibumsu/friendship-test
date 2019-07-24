@@ -1,26 +1,3 @@
-{#<table style="border: 1px solid black">#}
-{#    <tr>#}
-{#        <td>{{ quiz.title }}</td>#}
-{#    </tr>#}
-{#    <tr>#}
-{#        <td style="border: 1px solid black">#}
-{#            <form action="" method="POST">#}
-{#                {% csrf_token %}#}
-{#                <input type="hidden" name="quiz_id" value="{{ quiz.id }}">#}
-{#                <input type="hidden" name="answer" value="1">#}
-{#                <input type="submit" value="{{ quiz.opt1 }}">#}
-{#            </form>#}
-{#        </td>#}
-{#        <td style="border: 1px solid black">#}
-{#            <form action="" method="POST">#}
-{#                {% csrf_token %}#}
-{#                <input type="hidden" name="quiz_id" value={{ quiz.id }}>#}
-{#                <input type="hidden" name="answer" value="2">#}
-{#                <input type="submit" value="{{ quiz.opt2 }}">#}
-{#            </form>#}
-{#        </td>#}
-{#    </tr>#}
-{#</table>#}
 
 {% extends "quiz/base.html" %}
 {% block content %}
