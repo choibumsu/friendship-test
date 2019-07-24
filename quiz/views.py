@@ -74,7 +74,7 @@ def solve_quiz(request, pk):
             challenger.result += 1
             challenger.save()
         if num > 10:
-                return render(request, "quiz/solve_result.html", {"user":user, "challenger":challenger})
+            return redirect("quiz:solve_result", challenger.pk)
 
     quiz = get_object_or_404(Quiz, id=num)
     
@@ -82,5 +82,13 @@ def solve_quiz(request, pk):
 
 def solve_result(request, pk):
     challenger = get_object_or_404(Challenger, pk=pk)
-    user = get_object_or_404(User, pk=challenger.user_obj.pk)
-    return render(request, "quiz/solve_result.html", {"user":user, "challenger":challenger})
+    user = challenger.user_obj
+    if challenger.result >= 9:
+        text = user.name+"님과 소울메이트네요! 😍"
+    elif challenger.result >= 7:
+        text = "요즘 "+user.name+"님과 자주 보시나봐요 😁"
+    elif challenger.result >= 5:
+        text = "이 정도면 "+user.name+"님과 친한 사이라고 해둘게요 👻"
+    else:
+        text = "음. "+user.name+"님과 어색한 사이군요? 🙃"
+    return render(request, "quiz/solve_result.html", {"user":user, "challenger":challenger, "text":text})
